@@ -16,17 +16,19 @@
 </head>
 <body>
 
+    <!-- Step 1 -->
     <div class="content" id="view1">
         <div class="box">
             <h1>ALMOST THERE!</h1>
             <div id="countdown" style="font-size: 2.5rem; font-weight: bold;">00 : 09 : 07 : 24</div>
         </div>
         <div class="nav-buttons">
-            <span></span> <!-- Spacer -->
+            <span></span>
             <button class="next" onclick="show('view2')">Next ></button>
         </div>
     </div>
 
+    <!-- Step 2 -->
     <div class="content hidden" id="view2">
         <div class="box">
             <h2>Happy Birthday, FAA!</h2>
@@ -38,6 +40,7 @@
         </div>
     </div>
 
+    <!-- Step 3 -->
     <div class="content hidden" id="view3">
         <div class="box">
             <div style="font-size: 3rem;">🔒</div>
@@ -47,13 +50,14 @@
     </div>
 
     <audio id="bgMusic" loop>
-        <source src="JVKE, ZVC - made for me (official lyric video) [OVlxbGND20A].mp3" type="audio/mp3">
+        <source src="Until I Found You.mp3" type="audio/mp3">
     </audio>
 
     <script>
         function show(viewId) {
             document.querySelectorAll('.content').forEach(el => el.classList.add('hidden'));
             document.getElementById(viewId).classList.remove('hidden');
+            // Muzik akan play bila user mula tekan butang
             document.getElementById("bgMusic").play().catch(() => {});
         }
         function unlock() { alert("Surprise! I love you!"); }
