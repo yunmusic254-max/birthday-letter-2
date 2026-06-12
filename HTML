@@ -2,44 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>For My FAA ✨</title>
+    <title>Birthday Journey for FAA</title>
     <style>
-        body { background: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .card { width: 300px; height: 400px; perspective: 1000px; cursor: pointer; }
-        .card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; }
-        .card.flipped .card-inner { transform: rotateY(180deg); }
-        .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .front { background: #1e293b; border: 1px solid #334155; }
-        .back { background: #f472b6; color: #fff; transform: rotateY(180deg); }
-        button { margin-top: 20px; padding: 10px 20px; border-radius: 8px; border: none; background: #38bdf8; color: white; font-weight: bold; cursor: pointer; }
+        body { background: #0f172a; color: #f8fafc; font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; text-align: center; }
+        .step { display: none; width: 90%; max-width: 400px; animation: fadeIn 0.5s; }
+        .active { display: block; }
+        .btn-container { margin-top: 20px; }
+        button { background: #f472b6; border: none; padding: 10px 25px; border-radius: 20px; color: white; cursor: pointer; font-weight: bold; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <div class="card" onclick="this.classList.toggle('flipped')">
-        <div class="card-inner">
-            <div class="front">
-                <h2>To FAA 💌</h2>
-                <p>Tap to open my heart</p>
-            </div>
-            <div class="back">
-                <h3>Happy Birthday FAA!</h3>
-                <p>Yun sayang baby sampai bila-bila. You are my everything.</p>
-            </div>
+    <!-- Step 1: Countdown -->
+    <div id="step1" class="step active">
+        <h1>ALMOST THERE!</h1>
+        <div id="timer" style="font-size: 2rem; margin: 20px 0;">00:09:07:24</div>
+        <button onclick="nextStep(1)">Skip countdown ></button>
+    </div>
+
+    <!-- Step 2: Mesej Utama -->
+    <div id="step2" class="step">
+        <h1>Happy Birthday, FAA!</h1>
+        <p>Turning 17!</p>
+        <div class="btn-container">
+            <button onclick="nextStep(2)">Next ></button>
         </div>
     </div>
 
-    <!-- Tambah Audio -->
-    <audio id="myAudio" loop>
+    <!-- Step 3: Mesej Cinta -->
+    <div id="step3" class="step">
+        <h2>A Message for You</h2>
+        <p style="padding: 20px; background: #1e293b; border-radius: 15px;">
+            "Terima kasih sebab sentiasa ada dengan Yun. Yun tahu Yun tak perfect, tapi Yun akan sentiasa cuba yang terbaik untuk baby."
+        </p>
+        <button onclick="nextStep(3)">Unlock my gift ></button>
+    </div>
+
+    <audio id="bgMusic" loop>
         <source src="JVKE, ZVC - made for me (official lyric video) [OVlxbGND20A].mp3" type="audio/mp3">
     </audio>
 
     <script>
-        // Auto play bila user sentuh mana-mana
-        document.body.addEventListener('click', function() {
-            var audio = document.getElementById("myAudio");
-            audio.play();
-        }, { once: true });
+        function nextStep(current) {
+            document.getElementById('step' + current).classList.remove('active');
+            document.getElementById('step' + (current + 1)).classList.add('active');
+            document.getElementById('bgMusic').play(); // Muzik start bila tekan next
+        }
     </script>
 </body>
 </html>
