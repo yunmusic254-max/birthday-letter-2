@@ -16,7 +16,7 @@
 </head>
 <body>
 
-    <!-- Step 1 -->
+    <!-- Step 1: Countdown -->
     <div class="content" id="view1">
         <div class="box">
             <h1>ALMOST THERE!</h1>
@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <!-- Step 2 -->
+    <!-- Step 2: Mesej Utama -->
     <div class="content hidden" id="view2">
         <div class="box">
             <h2>Happy Birthday, FAA!</h2>
@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <!-- Step 3 -->
+    <!-- Step 3: Unlock -->
     <div class="content hidden" id="view3">
         <div class="box">
             <div style="font-size: 3rem;">🔒</div>
@@ -49,6 +49,7 @@
         </div>
     </div>
 
+    <!-- Fail Lagu -->
     <audio id="bgMusic" loop>
         <source src="Until I Found You.mp3" type="audio/mp3">
     </audio>
@@ -57,7 +58,7 @@
         function show(viewId) {
             document.querySelectorAll('.content').forEach(el => el.classList.add('hidden'));
             document.getElementById(viewId).classList.remove('hidden');
-            // Muzik akan play bila user mula tekan butang
+            // Muzik start bila user tekan butang
             document.getElementById("bgMusic").play().catch(() => {});
         }
         function unlock() { alert("Surprise! I love you!"); }
