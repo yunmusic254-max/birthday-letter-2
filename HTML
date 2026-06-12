@@ -2,41 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Birthday Journey for FAA</title>
+    <title>Birthday Surprise for FAA</title>
     <style>
-        body { background: #0f172a; color: #f8fafc; font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; text-align: center; }
-        .step { display: none; width: 90%; max-width: 400px; animation: fadeIn 0.5s; }
-        .active { display: block; }
-        .btn-container { margin-top: 20px; }
-        button { background: #f472b6; border: none; padding: 10px 25px; border-radius: 20px; color: white; cursor: pointer; font-weight: bold; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        body { background: #0f172a; color: #fff; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+        .content { width: 90%; max-width: 500px; text-align: center; }
+        .box { background: #1e293b; padding: 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 20px; }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 30px; }
+        button { background: #334155; color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; transition: 0.3s; }
+        button.next { background: #f472b6; }
+        button:hover { opacity: 0.8; }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
 
-    <!-- Step 1: Countdown -->
-    <div id="step1" class="step active">
-        <h1>ALMOST THERE!</h1>
-        <div id="timer" style="font-size: 2rem; margin: 20px 0;">00:09:07:24</div>
-        <button onclick="nextStep(1)">Skip countdown ></button>
-    </div>
-
-    <!-- Step 2: Mesej Utama -->
-    <div id="step2" class="step">
-        <h1>Happy Birthday, FAA!</h1>
-        <p>Turning 17!</p>
-        <div class="btn-container">
-            <button onclick="nextStep(2)">Next ></button>
+    <div class="content" id="view1">
+        <div class="box">
+            <h1>ALMOST THERE!</h1>
+            <div id="countdown" style="font-size: 2.5rem; font-weight: bold;">00 : 09 : 07 : 24</div>
+        </div>
+        <div class="nav-buttons">
+            <span></span> <!-- Spacer -->
+            <button class="next" onclick="show('view2')">Next ></button>
         </div>
     </div>
 
-    <!-- Step 3: Mesej Cinta -->
-    <div id="step3" class="step">
-        <h2>A Message for You</h2>
-        <p style="padding: 20px; background: #1e293b; border-radius: 15px;">
-            "Terima kasih sebab sentiasa ada dengan Yun. Yun tahu Yun tak perfect, tapi Yun akan sentiasa cuba yang terbaik untuk baby."
-        </p>
-        <button onclick="nextStep(3)">Unlock my gift ></button>
+    <div class="content hidden" id="view2">
+        <div class="box">
+            <h2>Happy Birthday, FAA!</h2>
+            <p>Turning 17!</p>
+        </div>
+        <div class="nav-buttons">
+            <button onclick="show('view1')">< Back</button>
+            <button class="next" onclick="show('view3')">Next ></button>
+        </div>
+    </div>
+
+    <div class="content hidden" id="view3">
+        <div class="box">
+            <div style="font-size: 3rem;">🔒</div>
+            <p>Complete the steps to unlock the content</p>
+            <button class="next" onclick="unlock()">Unlock my gift ></button>
+        </div>
     </div>
 
     <audio id="bgMusic" loop>
@@ -44,11 +51,12 @@
     </audio>
 
     <script>
-        function nextStep(current) {
-            document.getElementById('step' + current).classList.remove('active');
-            document.getElementById('step' + (current + 1)).classList.add('active');
-            document.getElementById('bgMusic').play(); // Muzik start bila tekan next
+        function show(viewId) {
+            document.querySelectorAll('.content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(viewId).classList.remove('hidden');
+            document.getElementById("bgMusic").play().catch(() => {});
         }
+        function unlock() { alert("Surprise! I love you!"); }
     </script>
 </body>
 </html>
