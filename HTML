@@ -2,25 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Birthday Surprise for FAA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For FAA</title>
     <style>
         body { background: #0f172a; color: #fff; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
-        .content { width: 90%; max-width: 500px; text-align: center; }
-        .box { background: #1e293b; padding: 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 20px; }
-        .nav-buttons { display: flex; justify-content: space-between; margin-top: 30px; }
-        button { background: #334155; color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; transition: 0.3s; }
+        .content { width: 90%; max-width: 400px; text-align: center; }
+        .box { background: #1e293b; padding: 25px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); margin-bottom: 20px; }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
+        button { background: #334155; color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; transition: 0.3s; font-weight: bold; }
         button.next { background: #f472b6; }
         button:hover { opacity: 0.8; }
         .hidden { display: none; }
+        img { width: 100%; border-radius: 15px; margin-bottom: 15px; }
     </style>
 </head>
 <body>
 
-    <!-- Step 1: Countdown -->
     <div class="content" id="view1">
         <div class="box">
             <h1>ALMOST THERE!</h1>
-            <div id="countdown" style="font-size: 2.5rem; font-weight: bold;">00 : 09 : 07 : 24</div>
+            <div style="font-size: 2rem; font-weight: bold;">00 : 09 : 07 : 24</div>
         </div>
         <div class="nav-buttons">
             <span></span>
@@ -28,9 +29,9 @@
         </div>
     </div>
 
-    <!-- Step 2: Mesej Utama -->
     <div class="content hidden" id="view2">
         <div class="box">
+            <img src="gambar.jpg" alt="Special Photo">
             <h2>Happy Birthday, FAA!</h2>
             <p>Turning 17!</p>
         </div>
@@ -40,7 +41,6 @@
         </div>
     </div>
 
-    <!-- Step 3: Unlock -->
     <div class="content hidden" id="view3">
         <div class="box">
             <div style="font-size: 3rem;">🔒</div>
@@ -49,16 +49,14 @@
         </div>
     </div>
 
-    <!-- Fail Lagu -->
     <audio id="bgMusic" loop>
-        <source src="Until I Found You.mp3" type="audio/mp3">
+        <source src="lagu.mp3" type="audio/mp3">
     </audio>
 
     <script>
         function show(viewId) {
             document.querySelectorAll('.content').forEach(el => el.classList.add('hidden'));
             document.getElementById(viewId).classList.remove('hidden');
-            // Muzik start bila user tekan butang
             document.getElementById("bgMusic").play().catch(() => {});
         }
         function unlock() { alert("Surprise! I love you!"); }
