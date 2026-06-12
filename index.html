@@ -3,63 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For FAA</title>
+    <title>A Letter for FAA</title>
     <style>
-        body { background: #0f172a; color: #fff; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
-        .content { width: 90%; max-width: 400px; text-align: center; }
-        .box { background: #1e293b; padding: 25px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); margin-bottom: 20px; }
-        .nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
-        button { background: #334155; color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; transition: 0.3s; font-weight: bold; }
-        button.next { background: #f472b6; }
-        button:hover { opacity: 0.8; }
+        body { 
+            background: #fdf2f8; 
+            color: #4a4a4a; 
+            font-family: 'Georgia', serif; 
+            display: flex; justify-content: center; align-items: center; 
+            min-height: 100vh; margin: 0; 
+        }
+        .letter { 
+            background: white; 
+            padding: 40px; 
+            width: 85%; max-width: 400px; 
+            border-radius: 10px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid #ffe4e6;
+        }
+        h1 { color: #db2777; font-size: 1.5rem; }
         .hidden { display: none; }
-        img { width: 100%; border-radius: 15px; margin-bottom: 15px; }
+        button { 
+            background: #db2777; color: white; border: none; 
+            padding: 12px 25px; border-radius: 5px; cursor: pointer; margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="content" id="view1">
-        <div class="box">
-            <h1>ALMOST THERE!</h1>
-            <div style="font-size: 2rem; font-weight: bold;">00 : 09 : 07 : 24</div>
-        </div>
-        <div class="nav-buttons">
-            <span></span>
-            <button class="next" onclick="show('view2')">Next ></button>
-        </div>
+    <div class="letter" id="page1">
+        <h1>To: FAA</h1>
+        <p>I have a little something for you...</p>
+        <button onclick="show()">Open Letter</button>
     </div>
 
-    <div class="content hidden" id="view2">
-        <div class="box">
-            <img src="gambar.jpg" alt="Special Photo">
-            <h2>Happy Birthday, FAA!</h2>
-            <p>Turning 17!</p>
-        </div>
-        <div class="nav-buttons">
-            <button onclick="show('view1')">< Back</button>
-            <button class="next" onclick="show('view3')">Next ></button>
-        </div>
+    <div class="letter hidden" id="page2">
+        <p>Happy 17th Birthday, FAA!</p>
+        <p>I hope your day is as special as you are to me.</p>
+        <p>Thank you for everything.</p>
     </div>
-
-    <div class="content hidden" id="view3">
-        <div class="box">
-            <div style="font-size: 3rem;">🔒</div>
-            <p>Complete the steps to unlock the content</p>
-            <button class="next" onclick="unlock()">Unlock my gift ></button>
-        </div>
-    </div>
-
-    <audio id="bgMusic" loop>
-        <source src="lagu.mp3" type="audio/mp3">
-    </audio>
 
     <script>
-        function show(viewId) {
-            document.querySelectorAll('.content').forEach(el => el.classList.add('hidden'));
-            document.getElementById(viewId).classList.remove('hidden');
-            document.getElementById("bgMusic").play().catch(() => {});
+        function show() {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
         }
-        function unlock() { alert("Surprise! I love you!"); }
     </script>
 </body>
 </html>
